@@ -21,17 +21,18 @@ const food = {
 const tree = document.querySelector('#tree');
 
 function createTree(element, data) {
+  const mainLista = document.createElement('ul');
+
+  element.append(mainLista);
+
   Object.keys(data).forEach((key) => {
     const lista = document.createElement('li');
 
     lista.textContent = key;
-    element.append(lista);
+    mainLista.append(lista);
 
     if (Object.keys(data[key]).length > 0) {
-      const podpunkt = document.createElement('ul');
-
-      lista.append(podpunkt);
-      createTree(podpunkt, data[key]);
+      createTree(lista, data[key]);
     }
   });
 }
